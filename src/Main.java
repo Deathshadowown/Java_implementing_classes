@@ -36,12 +36,51 @@ public class Main{
         person.setName(name);
         person.setLastName(lastName);
         person.setFavouriteChips(favouriteChips);
-
+        int count = 5;
+        int[] intarray = {3,1,2};
+        int points = 0;
+        int growndThrow = 0;
         person.setWelcomeString();
-        person.buyChips();
-        person.eatChips();
-        person.throwPackatOfChipsInBin();
-        person.throwPackatOfChipsOntoTheGround();
-
+        System.out.println("Please Select a number from 1 to 5, Goal of the game is to pick the correct order. you got 5 chances");
+        System.out.println("Need a max of 2 points to win");
+        while(count > 2)
+        {
+            System.out.print("1) eatChips, 2) throwPackatOfChipsInBin, 3) buyChips, 4) throwPackatOfChipsOntoTheGround\n");
+            int i = scan.nextInt();
+            if (i == 1)
+            {
+                person.eatChips();
+                if(count != 4)
+                    points--;
+                points++;
+            }
+            else if (i == 2)
+            {
+                person.throwPackatOfChipsInBin();
+                if (count != 3)
+                    points--;
+                points++;
+            }
+            else if (i == 3)
+            {
+                person.buyChips();
+                if (count != 5)
+                    points--;
+                points++;
+            }
+            else if (i == 4)
+            {
+                person.throwPackatOfChipsOntoTheGround();
+                points--;
+                growndThrow++;
+            }
+            count--;
+        }
+        if (points == 3)
+        System.out.println(points+" congratulations you won!! you know how to throw away your rubbish after you done with it");
+        else if (growndThrow == 1)
+        System.out.println(points+" You Loose you really need to look into what to do with your rubbish, once you done with it!!!");
+        else
+        System.out.println(points+" You Loose Better luck next time");
     }
 }
